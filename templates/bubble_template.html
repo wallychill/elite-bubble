@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<head>
+	<link rel="stylesheet" type="text/css" href="bubble_{{style}}.css">
+	<title>Bubble Report for System : {{target.name}}</title>
+</head>
+<body>
+	<! Header table with target system details >
+	<div class="header"><table>
+		<tr>
+			<th colspan="2"><h1>{{target.name}}</h1></td>
+		</tr>
+		<tr>
+			<td><img src="images/star_f.png" style="width: 128px; height: 128px;"></td>
+			<td style="text-align: center;">{{target.population}}</td>
+		</tr>
+	</table></div>
+
+	<! Table of systems within bubble >
+	<div class="systems"><table>
+		<tr>
+			<th style="width: 8em;">LY</th>
+			<th style="width: 40em;">Name</th>
+			<th style="width: 8em;">Population</th>
+			<th style="width: 700px;">Stations</th>
+		</tr>
+		{% for s in systems %}
+		<tr>
+			<td style="text-align: right;">{{"%5.2f"|format(s.distance)}}</td>
+			<td>{{s.name}}</td>
+			<td style="text-align: center;">{{s.population}}</td>
+			<td>
+			{% if s.stations|length > 0 %}
+			<div class="stations"><table>
+				<tr>
+					<th style="width: 32px;"></th>
+					<td style="width: 600px;">
+						<div class="system_scale"><table>
+							<tr>
+								<td>10</td>
+								<td>100</td>
+								<td>1K</td>
+								<td>10K</td>
+								<td>100K</td>
+								<td>1M</td>
+							</tr>
+						</table></div>
+					</td>
+				</tr>
+				{% for sta in s.stations %}
+				<tr>
+					<td rowspan="2" style="text-align: center;">
+						{% if s.superpower == 1 %}
+							<img src="images/logo_alliance.png" style="height: 40px;">
+						{% elif s.superpower == 2 %}
+							<img src="images/logo_empire.png" style="height: 40px;">
+						{% elif s.superpower == 3 %}
+							<img src="images/logo_federation.png" style="height: 40px;">
+						{% else %}
+							<img src="images/logo_independent.png" style="height: 40px;">
+						{% endif %}
+					</td>
+					<td style="width: 600px; text-align: left; padding-left: {{"%d"|format((sta.log_distance*100)-16)}}px;"><img src="images/{{sta.icon}}" alt="{{sta.icon}}" style="width: 32px; height: 32px;"></td>
+				</tr>
+				<tr>
+					<td style="size: 8px; width: 600px; text-align: left; padding-left: {{"%d"|format((sta.log_distance*100)-(4*(sta.short_name|length)))}}px;">{{sta.short_name}}</td>
+				</tr>
+				{% endfor %}
+			</table></div>
+			{% endif %}
+			</td>
+		</tr>
+		{% endfor %}
+	</table></div>
+
+	<! Table of potential trade routes >
+
+	<! Table of rare goods in bubble >
+
+</body>

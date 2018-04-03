@@ -1,0 +1,71 @@
+
+body {
+	color: black;
+	font-family: sans-serif;
+}
+
+table {
+	border-collapse: collapse;
+	border: 1px solid black;
+}
+
+th, td {
+	text-align: center;
+	border: 1px solid black;
+	vertical-align: middle;
+	padding: 2px;
+}
+
+/* Header contains data about target system */
+.header, .systems {
+	padding: 10px 10px 10px 10px;
+}
+
+.header table {
+	table-layout: auto;
+	width: 100%;
+}
+
+/* Systems table contains data about systems within the bubble */
+.systems table {
+	table-layout: fixed;
+}
+
+.systems th, .systems td {
+	font-size: 12px;
+}
+
+.systems td {
+	text-align: left;
+}
+
+/* Stations table lists all outposts and starports in a single system */
+.stations table {
+	table-layout: fixed;
+	border: none;
+}
+
+.stations th, .stations td {
+	font-size: 12px;
+	border: none;
+}
+
+.stations td {
+	font-size: 12px;
+	text-align: right;
+}
+
+/* Systems scale displays the logarithmic scale for in-system stations and bodies */
+.system_scale table {
+	table-layout: fixed;
+}
+
+.system_scale td {
+	border: 2px solid grey;
+	font-size: 8px;
+	color: grey;
+	text-align: right;
+	vertical-align: middle;
+	width: 100px;
+	padding: 1px 0px 1px 0px;
+}
