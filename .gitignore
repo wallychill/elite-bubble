@@ -1,0 +1,5 @@
+edsm/*
+bodies/*
+*.json
+*.jsonl
+*.csv
